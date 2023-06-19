@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Movie Streaming API - stream movies by IMDB ID</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="index,follow" />
+<meta http-equiv="content-language" content="vi" />
+<meta name="description" content="Movie streaming API. Get movie stream URL or embed code with our movie streams library. Get movie stream by IMDB or TMDB ID. The infinite web of movies." />
+<meta name="keywords" content="Movie streaming API. Get movie stream URL or embed code with our movie streams library. Get movie stream by IMDB or TMDB ID. The infinite web of movies." />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<!--Begin: Stylesheet-->
+<link rel="stylesheet" href="/css/style.min.css?v=0.1">
+</head>
+<body>
+<div id="wrapper">
+    <div id="header">
+    <input type="hidden" value="https://www.2embed.to" id="base_url">
+    <div class="container">
+        <div id="mobile_menu"><i class="fa fa-bars"></i></div>
+        <a href="/" id="logo" title="">
+            <img src="/images/logo.png" alt="2Embed">
+            <span>2Embed</span>
+            <div class="clearfix"></div>
+        </a>
+        <!--Begin: Menu-->
+        <div id="header_menu">
+            <ul class="nav header_menu-list">
+                <li class="nav-item"><a href="/" title="Home">Home</a></li>
+                <li class="nav-item"><a href="/example" title="Example">Example</a></li>
+                <li class="nav-item"><a href="/library" title="Library">Library</a></li>
+                <li class="nav-item"><a href="/contact" title="Contact">Contact</a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <!--End: Menu-->
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+    <div id="main-wrapper">
+        <input type="hidden" value="https://www.2embed.to" id="base_url">
+        <div class="container">
+            <!--Begin: Home top-->
+            <div class="home-top">
+                <!--Begin: Description-->
+                <div class="home-description">
+                    <div class="intro"><img src="/images/intro.png" alt=""></div>
+                    <h2 class="heading-large mb-3">Get movie & Tv Shows stream by IMDB, TMDB, Title/Year Best Video Api, the
+                        best streaming movies API in 2021.</h2>
+                    <h3 class="heading-small">2Embed crawls various websites and search engines to find movie
+                        streaming links which are then stored into our database and served to you through our API
+                        service. </h3>
+                </div>
+                <!--/End: Description-->
+                <!--Begin: Services-->
+                <div class="home-services">
+                    <div class="home-services-list">
+                        <a class="hs-item hs-imdb" data-content="hs-imdb">
+                            <div class="item-cover"><img src="/images/bg-thumbs/01.jpg"></div>
+                            <div class="detail">
+                                <div class="hs-title">Get movies/shows with <span>IMDB id</span></div>
+                                <div class="hs-btn">
+                                    <button class="btn btn-radius btn-primary"><i
+                                                class="fas fa-chevron-circle-down mr-2"></i>Show Now
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="hs-item hs-tmdb" data-content="hs-tmdb">
+                            <div class="item-cover"><img src="/images/bg-thumbs/11.jpg"></div>
+                            <div class="detail">
+                                <div class="hs-title">Get movies/shows with <span>TMDB id</span></div>
+                                <div class="hs-btn">
+                                    <button type="button" class="btn btn-radius btn-primary"><i
+                                                class="fas fa-chevron-circle-down mr-2"></i>Show Now
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="hs-item hs-info" data-content="hs-info">
+                            <div class="item-cover"><img src="/images/bg-thumbs/12.jpg"></div>
+                            <div class="detail">
+                                <div class="hs-title">Get movies/shows with <span>Title-Year</span></div>
+                                <div class="hs-btn">
+                                    <button type="button" class="btn btn-radius btn-primary"><i
+                                                class="fas fa-chevron-circle-down mr-2"></i>Show Now
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="hs-item hs-lib" href="/library">
+                            <div class="item-cover"><img src="/images/bg-thumbs/22.jpg"></div>
+                            <div class="detail">
+                                <div class="hs-title">APICloud Sharing <span>Library</span></div>
+                                <div class="hs-btn">
+                                    <button type="button" class="btn btn-radius btn-primary"><i
+                                                class="fas fa-chevron-circle-down mr-2"></i>Show Now
+                                    </button>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!--/End: Services-->
+                <div class="clearfix"></div>
+            </div>
+            <!--/End: Home top-->
+            <!--Begin: Home content-->
+            <div class="home-content" id="hs-imdb" style="display:none">
+                <div class="hc-container">
+                    <div class="pane-close">
+                        <button id="panel-close" type="button" class="btn btn-circle btn-light"><i
+                                    class="fas fa-times"></i></button>
+                    </div>
+                    <div class="cc-top">
+                        <div class="content-tabs">
+                            <ul class="nav nav-tabs pre-tabs model-tabs">
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" id="hs-imdb-nav-1"
+                                                        href="#hs-imdb-tab-01"><i
+                                                class="fas fa-film mr-2"></i>Movie</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#hs-imdb-tab-02" id="hs-imdb-nav-2"><i
+                                                class="fas fa-tv mr-2"></i>TV Show</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#hs-imdb-tab-03" id="hs-imdb-nav-3"><i
+                                                class="fas fa-feather-alt mr-2"></i>API</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div id="hs-imdb-tab-01" class="tab-pane">
+                            <div class="tab-pane-content">
+                                <div class="tpc-form">
+                                    <h4 class="heading-large mb-4">Try <span class="highlight-text">IMDB id</span> To
+                                        Get Movie Iframe</h4>
+                                    <form class="preform">
+                                        <div class="form-group">
+                                            <label class="prelabel" for="imdbid-movie">Enter imdb id</label>
+                                            <input required type="text" class="form-control" id="imdbid-movie"
+                                                   placeholder="ex: tt6806448">
+                                        </div>
+                                        <div class="form-group getit-btn mb-0">
+                                            <button class="btn btn-lg btn-radius btn-primary">Get it<i
+                                                        class="fas fa-angle-right ml-3"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tpc-player">
+                                    <div class="media-player">
+                                        <iframe width="560" height="315"
+                                                data-src="https://hdwatch.tv"
+                                                frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                    <div class="d-block title text-center">PLAYING <span class="highlight-text"
+                                                                                         id="imdb-movie-id-playing">HD Server</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div id="hs-imdb-tab-02" class="tab-pane">
+                            <div class="tab-pane-content">
+                                <div class="tpc-form">
+                                    <h4 class="heading-large mb-4">Try <span class="highlight-text">IMDB id</span> To
+                                        Get Show Iframe</h4>
+                                    <form class="preform">
+                                        <div class="form-group">
+                                            <label class="prelabel" for="imdbid-show-id">Enter imdb id</label>
+                                            <input type="text" class="form-control" id="imdbid-show-id" required
+                                                   placeholder="ex: tt0903747">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="prelabel" for="imdbid-show-ss">Season</label>
+                                                    <input type="text" class="form-control" id="imdbid-show-ss" required
+                                                           placeholder="ex: 1">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="prelabel" for="imdbid-show-ep">Episode</label>
+                                                    <input type="text" class="form-control" id="imdbid-show-ep" required
+                                                           placeholder="ex: 1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group getit-btn mb-0">
+                                            <button class="btn btn-lg btn-radius btn-primary">Get it<i
+                                                        class="fas fa-angle-right ml-3"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tpc-player">
+                                    <div class="media-player">
+                                        <iframe width="560" height="315"
+                                                data-src="https://www.2embed.to/embed/imdb/tv?id=tt0903747&s=1&e=1"
+                                                frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                    <div class="d-block title text-center">PLAYING <span class="highlight-text"
+                                                                                         id="imdb-show-id-playing">tt0903747</span>,
+                                        <span class="text-white" id="imdb-show-season-playing">Season: 1</span>, <span
+                                                class="text-white" id="imdb-show-episode-playing">Episode: 1</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div id="hs-imdb-tab-03" class="tab-pane tab-pane-api">
+                            <div class="tab-pane-content">
+                                <div class="tpc-form">
+                                    <form class="preform">
+                                        <div class="form-group" style="margin-bottom: 40px;">
+                                            <h4 class="heading-medium mb-3"><span
+                                                        class="highlight-text">IMDB id movie</span> API</h4>
+                                            <div class="api-line">URL API :
+                                                https://www.2embed.to/embed/imdb/movie?id=<span
+                                                        class="text-warning">IMDB ID</span></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <h4 class="heading-medium mb-3"><span
+                                                        class="highlight-text">IMDB id tv show</span>
+                                                API</h4>
+                                            <div class="api-line">
+                                                URL API : https://www.2embed.to/embed/imdb/tv?id=<span
+                                                        class="text-warning">IMDB ID</span>&s=<span
+                                                        class="text-warning">SEASON NUMBER</span>&e=<span
+                                                        class="text-warning">EPISODE NUMBER</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="home-content" id="hs-tmdb" style="display:none">
+                <div class="hc-container">
+                    <div class="pane-close">
+                        <button id="panel-close" type="button" class="btn btn-circle btn-light"><i
+                                    class="fas fa-times"></i></button>
+                    </div>
+                    <div class="cc-top">
+                        <div class="content-tabs">
+                            <ul class="nav nav-tabs pre-tabs model-tabs">
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" id="hs-tmdb-nav-1"
+                                                        href="#hs-tmdb-tab-01"><i
+                                                class="fas fa-film mr-2"></i>Movie</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#hs-tmdb-tab-02" id="hs-tmdb-nav-2"><i
+                                                class="fas fa-tv mr-2"></i>TV Show</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#hs-tmdb-tab-03" id="hs-tmdb-nav-3"><i
+                                                class="fas fa-feather-alt mr-2"></i>API</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div id="hs-tmdb-tab-01" class="tab-pane">
+                            <div class="tab-pane-content">
+                                <div class="tpc-form">
+                                    <h4 class="heading-large mb-4">Try <span class="highlight-text">TMDB id</span> To
+                                        Get Movie Iframe</h4>
+                                    <form class="preform">
+                                        <div class="form-group">
+                                            <label class="prelabel" for="tmdbid-movie">Enter tmdb id</label>
+                                            <input type="text" class="form-control" id="tmdbid-movie"
+                                                   placeholder="ex: 299534">
+                                        </div>
+                                        <div class="form-group getit-btn mb-0">
+                                            <button class="btn btn-lg btn-radius btn-primary">Get it<i
+                                                        class="fas fa-angle-right ml-3"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tpc-player">
+                                    <div class="media-player">
+                                        <iframe width="560" height="315"
+                                                data-src="https://www.2embed.to/embed/tmdb/movie?id=299534"
+                                                frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                    <div class="d-block title text-center">PLAYING <span
+                                                class="highlight-text" id="tmdb-movie-id-playing">299534</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div id="hs-tmdb-tab-02" class="tab-pane">
+                            <div class="tab-pane-content">
+                                <div class="tpc-form">
+                                    <h4 class="heading-large mb-4">Try <span class="highlight-text">TMDB id</span> To
+                                        Get Show Iframe</h4>
+                                    <form class="preform">
+                                        <div class="form-group">
+                                            <label class="prelabel" for="tmdbid-show-id">Enter tmdb id</label>
+                                            <input type="text" class="form-control" id="tmdbid-show-id"
+                                                   placeholder="ex: 66788">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="prelabel" for="tmdbid-show-ss">Season</label>
+                                                    <input type="text" class="form-control" id="tmdbid-show-ss"
+                                                           placeholder="ex: 1">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="prelabel" for="tmdbid-show-ep">Episode</label>
+                                                    <input type="text" class="form-control" id="tmdbid-show-ep"
+                                                           placeholder="ex: 1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group getit-btn mb-0">
+                                            <button class="btn btn-lg btn-radius btn-primary">Get it<i
+                                                        class="fas fa-angle-right ml-3"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tpc-player">
+                                    <div class="media-player">
+                                        <iframe width="560" height="315"
+                                                data-src="https://www.2embed.to/embed/tmdb/tv?id=66788&s=1&e=1"
+                                                frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                    <div class="d-block title text-center">PLAYING <span
+                                                class="highlight-text" id="tmdb-show-id-playing">66788</span>,
+                                        <span class="text-white" id="tmdb-show-season-playing">Season: 1</span>, <span
+                                                class="text-white" id="tmdb-show-episode-playing">Episode: 1</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div id="hs-tmdb-tab-03" class="tab-pane tab-pane-api">
+                            <div class="tab-pane-content">
+                                <div class="tpc-form">
+                                    <form class="preform">
+                                        <div class="form-group" style="margin-bottom: 40px;">
+                                            <h4 class="heading-medium mb-3"><span
+                                                        class="highlight-text">TMDB id movie</span> API</h4>
+                                            <div class="api-line">
+                                                URL API : https://www.2embed.to/embed/tmdb/movie?id=<span
+                                                        class="text-warning">TMDB ID</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <h4 class="heading-medium mb-3"><span
+                                                        class="highlight-text">TMDB id tv show</span>
+                                                API</h4>
+                                            <div class="api-line">
+                                                URL API : https://www.2embed.to/embed/tmdb/tv?id=<span
+                                                        class="text-warning">TMDB ID</span>&s=<span
+                                                        class="text-warning">SEASON NUMBER</span>&e=<span
+                                                        class="text-warning">EPISODE NUMBER</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="home-content" id="hs-info" style="display:none">
+                <div class="hc-container">
+                    <div class="pane-close">
+                        <button id="panel-close" type="button" class="btn btn-circle btn-light"><i
+                                    class="fas fa-times"></i></button>
+                    </div>
+                    <div class="cc-top">
+                        <div class="content-tabs">
+                            <ul class="nav nav-tabs pre-tabs model-tabs">
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                                                        href="#hs-info-tab-01" id="hs-info-nav-1"><i
+                                                class="fas fa-film mr-2"></i>Movie</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#hs-info-tab-02" id="hs-info-nav-2"><i
+                                                class="fas fa-tv mr-2"></i>TV Show</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#hs-info-tab-03" id="hs-info-nav-3"><i
+                                                class="fas fa-feather-alt mr-2"></i>API</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div id="hs-info-tab-01" class="tab-pane">
+                            <div class="tab-pane-content">
+                                <div class="tpc-form">
+                                    <h4 class="heading-large mb-4">Try <span class="highlight-text">Title</span> & <span
+                                                class="highlight-text">Year</span> To
+                                        Get Movie Iframe</h4>
+                                    <form class="preform">
+                                        <div class="form-group">
+                                            <label class="prelabel" for="info-title-movie">Enter title</label>
+                                            <input type="text" class="form-control" id="info-title-movie"
+                                                   placeholder="ex: Legacy" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="prelabel" for="info-year-movie">Enter year</label>
+                                            <input type="text" class="form-control" id="info-year-movie"
+                                                   placeholder="ex: 2020" required>
+                                        </div>
+                                        <div class="form-group getit-btn mb-0">
+                                            <button class="btn btn-lg btn-radius btn-primary">Get it<i
+                                                        class="fas fa-angle-right ml-3"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tpc-player">
+                                    <div class="media-player">
+                                        <iframe width="560" height="315"
+                                                data-src="https://www.2embed.to/embed/title/movie?title=Legacy&year=2020"
+                                                frameborder="0"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                    <div class="d-block title text-center">PLAYING <span class="highlight-text"
+                                                                                         id="info-movie-title-playing">Legacy (2020)</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div id="hs-info-tab-02" class="tab-pane">
+                            <div class="tab-pane-content">
+                                <div class="tpc-form">
+                                    <h4 class="heading-large mb-4">Try <span class="highlight-text">Title</span> & <span
+                                                class="highlight-text">Year</span> To
+                                        Get TV Show Iframe</h4>
+                                    <form class="preform">
+                                        <div class="form-group">
+                                            <label class="prelabel" for="info-show-title">Enter title</label>
+                                            <input type="text" class="form-control" id="info-show-title"
+                                                   placeholder="ex: The Flash" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="prelabel" for="info-show-year">Enter year</label>
+                                            <input type="text" class="form-control" id="info-show-year"
+                                                   placeholder="ex: 2014" required>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="prelabel" for="info-show-ss">Season</label>
+                                                    <input type="text" class="form-control" id="info-show-ss"
+                                                           placeholder="ex: 1" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label class="prelabel" for="info-show-ep">Episode</label>
+                                                    <input type="text" class="form-control" id="info-show-ep"
+                                                           placeholder="ex: 1" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group getit-btn mb-0">
+                                            <button class="btn btn-lg btn-radius btn-primary">Get it<i
+                                                        class="fas fa-angle-right ml-3"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tpc-player">
+                                    <div class="media-player">
+                                        <iframe width="560" height="315"
+                                                data-src="https://www.2embed.to/embed/title/tv?title=The Flash&year=2014&s=1&e=1"
+                                                frameborder="0"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                    <div class="d-block title text-center">PLAYING <span class="highlight-text"
+                                                                                         id="info-show-title-playing">The Flash (2014)</span>,
+                                        <span class="text-white" id="info-show-season-playing">Season: 1</span>, <span
+                                                class="text-white" id="info-show-episode-playing">Episode: 1</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div id="hs-info-tab-03" class="tab-pane tab-pane-api">
+                            <div class="tab-pane-content">
+                                <div class="tpc-form">
+                                    <form class="preform">
+                                        <div class="form-group" style="margin-bottom: 40px;">
+                                            <h4 class="heading-medium mb-3"><span
+                                                        class="highlight-text">IMDB id movies</span> API</h4>
+                                            <div class="api-line">
+                                                URL API : https://www.2embed.to/embed/title/movie?title=<span
+                                                        class="text-warning">TITLE</span>&year=<span
+                                                        class="text-warning">YEAR</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <h4 class="heading-medium mb-3"><span class="highlight-text">IMDB id tv shows</span>
+                                                API</h4>
+                                            <div class="api-line">
+                                                URL API : https://www.2embed.to/embed/title/tv?title=<span
+                                                        class="text-warning">TITLE</span>&year=<span
+                                                        class="text-warning">YEAR</span>&s=<span
+                                                        class="text-warning">SEASON NUMBER</span>&e=<span
+                                                        class="text-warning">EPISODE NUMBER</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/End: Home content-->
+        </div>
+    </div>
+
+    <div id="footer">
+    <div class="container">
+        <div class="copyright">© 2Embed</div>
+        <div class="footer-links">
+            <ul class="float-left ulclear">
+                <li><a href="/" title="Home">Home</a></li>
+                <li><a href="/example" title="Example">Example</a></li>
+                <li><a href="/library" title="Library">Library</a></li>
+                <li><a href="/contact" title="Contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+</div>
+<div id="overlay"></div>
+<script src="/js/app.min.js?v=0.6"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dfcff342ed3295a"></script>
+</body>
+</html>
